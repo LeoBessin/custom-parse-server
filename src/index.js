@@ -25,6 +25,8 @@ _ParseServer.startApp = ParseServer.startApp;
 const S3Adapter = useExternal('S3Adapter', '@parse/s3-files-adapter');
 const GCSAdapter = useExternal('GCSAdapter', '@parse/gcs-files-adapter');
 
+console.log("✅ Custom Parse Server loaded!");
+
 Object.defineProperty(module.exports, 'logger', {
   get: getLogger,
 });
