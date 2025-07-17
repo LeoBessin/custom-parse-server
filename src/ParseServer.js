@@ -431,13 +431,7 @@ class ParseServer {
     if (!process.env.TESTING) {
       configureListeners(this);
     }
-    this.express.use((req, res, next) => {
-      console.log("🔍 [Parse Debug] Headers:", req.headers);
-      console.log("🔍 AppId:", req.get('x-parse-application-id'));
-      console.log("🔍 MasterKey:", req.get('x-parse-master-key'));
-      console.log("🔍 REST API Key:", req.get('x-parse-rest-api-key'));
-      next();
-    });
+
     this.expressApp = app;
     return this;
   }

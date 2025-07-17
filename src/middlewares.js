@@ -672,8 +672,16 @@ export function promiseEnsureIdempotency(req) {
 }
 
 function invalidRequest(req, res) {
+  console.warn('❌ [Parse Debug] Invalid request blocked with 403');
+
+  // Useful headers for auth
+  console.log('🔍 Headers:', req.headers);
+  console.log('🔍 IP:', req.ip);
+  console.log('🔍 Path:', req.originalUrl);
+
   res.status(403);
-  res.end('{"error":"unauthorized"}');
+  res.setHeader('Content-Type', 'application/json');
+  res.end(JSON.stringify({ error: 'unauthorized' }));
 }
 
 function malformedContext(req, res) {
