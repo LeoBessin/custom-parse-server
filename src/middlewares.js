@@ -127,6 +127,7 @@ export function handleParseHeaders(req, res, next) {
       try {
         req.body = JSON.parse(req.body);
       } catch (e) {
+        console.log('❌ [Parse Debug] Failed to parse body as JSON:', e);
         return invalidRequest(req, res);
       }
       fileViaJSON = true;
@@ -184,6 +185,7 @@ export function handleParseHeaders(req, res, next) {
         delete req.body._ContentType;
       }
     } else {
+      console.log('❌ [Parse Debug] Invalid request due to missing appId');
       return invalidRequest(req, res);
     }
   }
@@ -287,6 +289,7 @@ export function handleParseHeaders(req, res, next) {
   });
 
   if (oneKeyConfigured && !oneKeyMatches) {
+    console.log('❌ [Parse Debug] Invalid request due to mismatched keys');
     return invalidRequest(req, res);
   }
 
