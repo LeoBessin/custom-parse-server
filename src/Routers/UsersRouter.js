@@ -16,6 +16,7 @@ import {
 import { promiseEnsureIdempotency } from '../middlewares';
 import RestWrite from '../RestWrite';
 import { logger } from '../logger';
+import { log } from 'winston';
 
 export class UsersRouter extends ClassesRouter {
   className() {
@@ -199,6 +200,7 @@ export class UsersRouter extends ClassesRouter {
   }
 
   async handleLogIn(req) {
+    console.log("🔍 [Parse Debug] Handling user login");
     const user = await this._authenticateUserFromRequest(req);
     const authData = req.body && req.body.authData;
     // Check if user has provided their required auth providers
