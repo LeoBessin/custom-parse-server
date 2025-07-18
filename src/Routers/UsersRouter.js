@@ -645,9 +645,11 @@ export class UsersRouter extends ClassesRouter {
       return this.handleDelete(req);
     });
     this.route('GET', '/login', req => {
+      console.log("🔍 [Parse Debug] Handling user login via GET");
       return this.handleLogIn(req);
     });
     this.route('POST', '/login', req => {
+      console.log("🔍 [Parse Debug] Handling user login via POST");
       return this.handleLogIn(req);
     });
     this.route('POST', '/loginAs', req => {
