@@ -97,6 +97,18 @@ export function handleParseHeaders(req, res, next) {
     clientVersion: req.get('X-Parse-Client-Version'),
     context: context,
   };
+  
+    
+      console.log('🔍 [Debug] req.body:', req.body);
+      console.log('🔍 [Debug] _ApplicationId:', req.body?._ApplicationId);
+
+      const appConfig = AppCache.get(req.body?._ApplicationId);
+      console.log('🔍 [Debug] AppCache.get(_ApplicationId):', appConfig);
+
+      console.log('🔍 [Debug] info.masterKey:', info.masterKey);
+      console.log('🔍 [Debug] Expected masterKey:', appConfig?.masterKey);
+      console.log('🔍 [Debug] Master key match:', appConfig?.masterKey === info.masterKey);
+      console.log('🔍 [Debug] info.appId:', info.appId);
 
   var basicAuth = httpAuth(req);
 
