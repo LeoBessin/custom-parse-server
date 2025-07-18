@@ -200,7 +200,7 @@ export class UsersRouter extends ClassesRouter {
   }
 
   async handleLogIn(req) {
-    console.log("🔍 [Parse Debug] Handling user login");
+    console.log(`🔍 [Parse Debug] Handling user login - ${req.method}`);
     const user = await this._authenticateUserFromRequest(req);
     const authData = req.body && req.body.authData;
     // Check if user has provided their required auth providers
@@ -645,11 +645,9 @@ export class UsersRouter extends ClassesRouter {
       return this.handleDelete(req);
     });
     this.route('GET', '/login', req => {
-      console.log("🔍 [Parse Debug] Handling user login via GET");
       return this.handleLogIn(req);
     });
     this.route('POST', '/login', req => {
-      console.log("🔍 [Parse Debug] Handling user login via POST");
       return this.handleLogIn(req);
     });
     this.route('POST', '/loginAs', req => {
