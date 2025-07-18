@@ -151,6 +151,8 @@ export function handleParseHeaders(req, res, next) {
     if (req.body) {
       delete req.body._RevocableSession;
     }
+    console.log('🔍 [Parse Debug] Checking for _ApplicationId in request body');
+    console.log('🔍 [Parse Debug] req.body._ApplicationId:', req.body._ApplicationId);
     if (
       req.body &&
       req.body._ApplicationId &&
