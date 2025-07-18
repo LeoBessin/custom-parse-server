@@ -128,8 +128,10 @@ export function handleParseHeaders(req, res, next) {
   }
 
   var fileViaJSON = false;
-
+    console.log('🔍 [Parse Debug] info:', info)
+    console.log('🔍 [Parse Debug] AppCache.get(info.appId):', AppCache.get(info.appId));
   if (!info.appId || !AppCache.get(info.appId)) {
+    console.log('❌ [Parse Debug] If statement due to missing appId or app not found in cache');
     // See if we can find the app id on the body.
     if (req.body instanceof Buffer) {
       // The only chance to find the app id is if this is a file
