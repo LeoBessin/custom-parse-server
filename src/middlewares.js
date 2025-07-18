@@ -70,6 +70,7 @@ export const checkIp = (ip, ipRangeList, store) => {
 // req.config - the Config for this app
 // req.auth - the Auth for this request
 export function handleParseHeaders(req, res, next) {
+  console.log('🔍 [Parse Debug] Handling Parse Headers');
   var mount = getMountForRequest(req);
 
   let context = {};
@@ -136,16 +137,6 @@ export function handleParseHeaders(req, res, next) {
     if (req.body) {
       delete req.body._RevocableSession;
     }
-    
-      console.log('🔍 [Debug] req.body:', req.body);
-      console.log('🔍 [Debug] _ApplicationId:', req.body?._ApplicationId);
-
-      const appConfig = AppCache.get(req.body?._ApplicationId);
-      console.log('🔍 [Debug] AppCache.get(_ApplicationId):', appConfig);
-
-      console.log('🔍 [Debug] info.masterKey:', info.masterKey);
-      console.log('🔍 [Debug] Expected masterKey:', appConfig?.masterKey);
-      console.log('🔍 [Debug] Master key match:', appConfig?.masterKey === info.masterKey);
     if (
       req.body &&
       req.body._ApplicationId &&
